@@ -5,14 +5,10 @@ use Geo::Coder::RandMcnally;
 use Test::More;
 
 my $debug = $ENV{GEO_CODER_RANDMCNALLY_DEBUG};
-unless ($debug) {
-    diag "Set GEO_CODER_RANDMCNALLY_DEBUG to see request/response data";
-}
+diag "Set GEO_CODER_RANDMCNALLY_DEBUG to see request/response data"
+    unless $debug;
 
-my $geocoder = Geo::Coder::RandMcnally->new(
-    debug    => $debug,
-    compress => 0,
-);
+my $geocoder = Geo::Coder::RandMcnally->new(debug => $debug,);
 {
     my $address = '9855 Woods Drive, Skokie, IL';
     my $location = $geocoder->geocode($address);
